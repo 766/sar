@@ -67,6 +67,8 @@
   <string name="tcp_fastopen_summary_unsupported">Unsupported kernel version: %s &lt; 3.7.1</string>
   <string name="udp_dns">UDP Forwarding</string>
   <string name="udp_dns_summary">Forward UDP packets to remote</string>
+  <string name="dns">DNS</string>
+  <string name="dns_summary">The dns server you want to use,e.g. 8.8.8.8:53</string>
 
   <!-- feature category for SSR -->
   <string name="dns">International DNS</string>

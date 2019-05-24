@@ -1,0 +1,42 @@
+apply plugin: 'idea'
+apply plugin: 'scala'
+
+sourceSets {
+    main {
+        scala {
+            srcDirs = ['src/scala']
+        }
+    }
+    test {
+        scala {
+            srcDirs = ['test/scala']
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.11.12'
+    testCompile 'org.scalatest:scalatest_2.11:3.0.0'
+    zinc 'com.typesafe.zinc:zinc:0.3.9'
+}
+
+configurations.all {
+    resolutionStrategy.force "org.scala-lang:scala-library:2.11.12"
+}
+
+tasks.withType(ScalaCompile) {
+    configure(scalaCompileOptions.forkOptions) {
+        memoryMaximumSize = '1g'
+        jvmArgs = ['-XX:MaxPermSize=512m']
+    }
+}
+
+tasks.withType(ScalaCompile) {
+    scalaCompileOptions.with {
+        force = true
+    }
+}
